@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class AC {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Introduceți textul: ");
+        String text = scanner.nextLine();
+
+        System.out.print("Introduceți subșirul specificat: ");
+        String subString = scanner.nextLine();
+
+        System.out.print("Introduceți cuvântul de adăugat: ");
+        String cuvantAdaugat = scanner.nextLine();
+
+        String rezultat = adaugaCuvant(text, subString, cuvantAdaugat);
+
+
+        System.out.println("Textul rezultat: " + rezultat);
+
+        scanner.close();
+    }
+
+    private static String adaugaCuvant(String text, String subString, String cuvantAdaugat) {
+        StringBuilder rezultat = new StringBuilder();
+        String[] cuvinte = text.split("\\s+");
+
+        for (String cuvant : cuvinte) {
+            if (cuvant.contains(subString)) {
+                rezultat.append(cuvant).append(" ").append(cuvantAdaugat).append(" ");
+            } else {
+                rezultat.append(cuvant).append(" ");
+            }
+        }
+
+        return rezultat.toString().trim();
+    }
+}
